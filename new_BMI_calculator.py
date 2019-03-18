@@ -1,20 +1,34 @@
+login = str(input('Введите логин: '))
+password = str(input('Введите пароль: '))
 while True:
+    
+    #Словарь логинов и паролей
+    login_list = {
+        'qwerty' : '1234'
+    }
+    
 
-    def main():
-        #Калькулятор BMI fdff
-        print('Выберите действие', '\n', '1 Вывести список пользователей', '\n', '2 Добавить пользователя', \
-            '\n', '3 Удалить пользователя', '\n', '4 Выбрать пользователя', '\n', '5 Рассчет BMI')
-        choose = int(input('Введите действие: '))
-        if choose == 1:
-            list_of_users()
-        elif choose == 2:
-            add_user()
-        elif choose == 3:
-            delete_user()
-        elif choose == 4:
-            choose_user()
-        elif choose == 5:
-            raschet_bmi()
+    #логин
+    def auth():
+        global login
+        global password
+        
+        login = str(input('Введите логин: '))
+        password = str(input('Введите пароль: '))
+    
+
+
+    #проверка авторизации
+
+    def auth_check(func):
+        if login in login_list and login_list[login] == password:
+            func()
+        else:
+            auth()
+
+    
+
+            
 
     #Список пользователей
     user_list = {
@@ -43,10 +57,12 @@ while True:
 
 
     #Вывести список пользователей
+    
     def list_of_users():
         print(user_list.keys())
 
     #Добавить пользователя
+    
     def add_user():
         n = str(input('Введите имя: '))
         a = int(input('Введите возраст: '))
@@ -60,6 +76,7 @@ while True:
         }
 
     #Удалить пользователя
+    
     def delete_user():
         n = str(input('Введите имя пользователя которого хотите удалить: '))
         del(user_list[n])
@@ -68,7 +85,7 @@ while True:
         
 
     #Выбрать пользователя
-
+    
     def choose_user():
         n = str(input('Введите имя пользователя: '))
         
@@ -101,6 +118,7 @@ while True:
             print('Ожирение IV степени. Риск для здоровья чрезвычайно высокий. Необходимо немедленное снижение массы тела.')
             print('Значение вне графика')
 
+    
     def raschet_bmi():
 
         name = str(input('Введите имя:'))
@@ -138,4 +156,20 @@ while True:
         else:
             print('Ожирение IV степени. Риск для здоровья чрезвычайно высокий. Необходимо немедленное снижение массы тела.')
             print('Значение вне графика')
-    main()
+    
+    @auth_check    
+    def main():
+        #Калькулятор BMI fdff
+        print('Выберите действие', '\n', '1 Вывести список пользователей', '\n', '2 Добавить пользователя', \
+            '\n', '3 Удалить пользователя', '\n', '4 Выбрать пользователя', '\n', '5 Рассчет BMI')
+        choose = int(input('Введите действие: '))
+        if choose == 1:
+            list_of_users()
+        elif choose == 2:
+            add_user()
+        elif choose == 3:
+            delete_user()
+        elif choose == 4:
+            choose_user()
+        elif choose == 5:
+            raschet_bmi()
