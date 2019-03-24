@@ -1,3 +1,6 @@
+'''
+Программа для выкачивания всех файлов со страницы сайта manga.madokami.al
+'''
 
 from requests_html import HTML, HTMLSession
 import requests
@@ -33,8 +36,5 @@ for d in data:
         pass
 
 
-#print(link.html)
 
-
-#print(data)
 
