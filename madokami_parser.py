@@ -5,10 +5,11 @@
 from requests_html import HTML, HTMLSession
 import requests
 import pickle
+from getpass import getpass
 session = HTMLSession()
 input_link = str(input('Вставьте ссылку на страницу с которой хотите скачать файлы: '))
 input_login = str(input('Введите логин: '))
-input_pass = str(input('Введите пароль: '))
+input_pass = getpass('Введите пароль: ')
 r = session.get(input_link, auth=(input_login,input_pass))
 
 file_l = open('links.txt', 'w')
