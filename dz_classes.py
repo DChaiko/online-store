@@ -7,10 +7,7 @@ class Point:
 point1 = Point(3, 5)
 point2 = Point(12, 16)
 
-print(point1.x)
-print(point1.y)
-print(point2.x)
-print(point2.y)
+
 
 class Segment:
     def __init__(self, point1, point2):
@@ -40,13 +37,13 @@ class Segment:
             y_len = self.point2.y - self.point1.y
         ang = (math.atan(x_len/y_len))*57.2958
         ang = round(ang, 2)
-        print(ang)
+        return ang
     
-    def shift(self, x, y):
-        self.point1.x = self.point1.x + x
-        self.point1.y = self.point1.y + y
-        self.point2.x = self.point2.x + x 
-        self.point2.y = self.point2.y + y
+    def shift(self, x1, y1, x2, y2):
+        self.point1.x = self.point1.x + x1
+        self.point1.y = self.point1.y + y1
+        self.point2.x = self.point2.x + x2 
+        self.point2.y = self.point2.y + y2
         #print(point1.x, point1.y, point2.x, point2.y)
         return (self.point1, self.point2)
 
@@ -57,9 +54,10 @@ class Segment:
         
 l = Segment(point1, point2)
 l.angle()
-
-l.shift(2,2)
+print(l.length())
+l.shift(1,2,5,6)
 print(point1.x, point1.y)
+print(l.length())
 
 
 
