@@ -4,12 +4,12 @@ from django.db import models
 
 class Author(models.Model):
     name = models.CharField('имя автора', null=False, blank=False, max_length=30)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
 
-class Series(models.Model):
+class Serie(models.Model):
     serie = models.CharField('название серии', null=False, blank=False, max_length=30)
 
     def __str__(self):
