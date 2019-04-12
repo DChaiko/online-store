@@ -5,24 +5,24 @@ from directory.models import Publisher
 from books.models import Book
 
 
-def create_author(data):
-    obj = Author.objects.create(name = 'Author Name', description = '')
+def create_author(name):
+    obj = Author.objects.create(name = name, description = '')
     obj.save()
 
-def delete_author(data):
-    obj = Author.objects.get(name = 'Author Name')
+def delete_author(name):
+    obj = Author.objects.get(name = name)
     obj.delete()
 
-def count(data):
+def count():
     Author.objects.count()
 
-def generator(data):
+def generator(word):
     for i in range(1,10):
-        obj = Author.objects.create(name = 'name' + str(i), description = i)
+        obj = Author.objects.create(name = word + str(i), description = i)
         obj.save()
 
-def filter(data):
-    Author.objects.filter(name__istartswith = 'name').all()
+def filter(word):
+    Author.objects.filter(name__istartswith = word).all()
 
 dict = {
     'book_name':'book',
@@ -57,4 +57,10 @@ def new_book(dict):
 
 def upd_create(name):
     obj. created = Author.objects.update_or_create(name=name)
+
+def list_of_books(dictionary, key):
+    obj = dictionary.objects.get(pk=key)
+    for i in obj.books.all():
+        print(i)
+    
 
