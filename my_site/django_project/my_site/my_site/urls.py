@@ -16,9 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages import views
+from directory.views import AuthorView
+from directory.views import SerieView
+from directory.views import GenreView
+from directory.views import PublisherView
+from books.views import BookView
+
 
 urlpatterns = [
     path('', views.home),
     path('contacts/', views.contacts),
     path('admin/', admin.site.urls),
+    path('author/<int:pk>/', AuthorView.as_view()),
+    path('serie/<int:pk>/', SerieView.as_view()),
+    path('genre/<int:pk>/', GenreView.as_view()),
+    path('publisher/<int:pk>/', PublisherView.as_view()),
+    path('book/<int:pk>/', BookView.as_view()),
 ]
