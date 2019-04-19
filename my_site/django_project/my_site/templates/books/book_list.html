@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+  <title>Список авторов</title>
+ </head>
+ <body>
+  <h1>Книги</h1>
+    <table>
+    <tr>
+    <th>pk</th>
+    <th>Название</th>
+    <th>Автор</th>
+    <th>Жанр</th> 
+    </tr>
+  {% for book in object_list %}
+    
+        <tr>
+        <td>{{ book.pk }}</td>
+        <td><a href="{% url 'book-detail-view' book.pk %}">{{ book.book_name }}</a></td>
+        <td>{{ book.author.all|join:" // " }}</td>
+        <td>{{ book.genre }}</td>
+        
+        </tr>
+    
+   {% endfor %} 
+    </table>
+ </body>
+</html>

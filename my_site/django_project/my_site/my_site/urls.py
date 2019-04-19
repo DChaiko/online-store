@@ -21,15 +21,25 @@ from directory.views import SerieView
 from directory.views import GenreView
 from directory.views import PublisherView
 from books.views import BookView
+from books.views import BookList
+from directory.views import AuthorList
+from directory.views import SerieList
+from directory.views import GenreList
+from directory.views import PublisherList
 
 
 urlpatterns = [
     path('', views.home),
     path('contacts/', views.contacts),
     path('admin/', admin.site.urls),
-    path('author/<int:pk>/', AuthorView.as_view()),
-    path('serie/<int:pk>/', SerieView.as_view()),
-    path('genre/<int:pk>/', GenreView.as_view()),
-    path('publisher/<int:pk>/', PublisherView.as_view()),
-    path('book/<int:pk>/', BookView.as_view()),
+    path('author/<int:pk>/', AuthorView.as_view(), name = 'author-detail-view'),
+    path('serie/<int:pk>/', SerieView.as_view(), name = 'serie-detail-view'),
+    path('genre/<int:pk>/', GenreView.as_view(), name = 'genre-detail-view'),
+    path('publisher/<int:pk>/', PublisherView.as_view(), name = 'publisher-detail-view'),
+    path('book/<int:pk>/', BookView.as_view(), name = 'book-detail-view'),
+    path('author_list/', AuthorList.as_view()),
+    path('serie_list/', SerieList.as_view()),
+    path('genre_list/', GenreList.as_view()),
+    path('publisher_list/', PublisherList.as_view()),
+    path('book_list/', BookList.as_view()),
 ]

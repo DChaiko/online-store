@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+  <title>Список авторов</title>
+ </head>
+ <body>
+  <h1>Авторы</h1>
+    <table>
+    <tr>
+    <th>Имя</th>
+    <th>pk</th> 
+    </tr>
+  {% for author in object_list %}
+    
+        <tr>
+        <td><a href="{% url 'author-detail-view' author.pk %}">{{ author.name }}</a></td>
+        <td>{{ author.pk }}</td>
+        </tr>
+    
+   {% endfor %} 
+    </table>
+ </body>
+</html>

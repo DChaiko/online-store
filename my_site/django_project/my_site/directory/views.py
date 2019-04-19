@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from directory.models import Author
 from directory.models import Serie
 from directory.models import Genre
@@ -22,3 +23,15 @@ class GenreView(DetailView):
 class PublisherView(DetailView):
     model = Publisher
     slug_url_kwarg = "not_slug"
+
+class AuthorList(ListView):
+    model = Author
+
+class SerieList(ListView):
+    model = Serie
+
+class GenreList(ListView):
+    model = Genre
+
+class PublisherList(ListView):
+    model = Publisher
