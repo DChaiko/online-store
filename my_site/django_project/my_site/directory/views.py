@@ -26,12 +26,40 @@ class PublisherView(DetailView):
 
 class AuthorList(ListView):
     model = Author
-
+    def get_queryset(self):
+        qs = super().get_queryset()
+        data = self.request.GET.get('key', None)
+        if data != None:
+            qs = qs.filter(name__contains=data)
+            return qs
+        return qs
+        
 class SerieList(ListView):
     model = Serie
+    def get_queryset(self):
+        qs = super().get_queryset()
+        data = self.request.GET.get('key', None)
+        if data != None:
+            qs = qs.filter(serie__contains=data)
+            return qs
+        return qs
 
 class GenreList(ListView):
     model = Genre
+    def get_queryset(self):
+        qs = super().get_queryset()
+        data = self.request.GET.get('key', None)
+        if data != None:
+            qs = qs.filter(genre__contains=data)
+            return qs
+        return qs
 
 class PublisherList(ListView):
     model = Publisher
+    def get_queryset(self):
+        qs = super().get_queryset()
+        data = self.request.GET.get('key', None)
+        if data != None:
+            qs = qs.filter(pub__contains=data)
+            return qs
+        return qs

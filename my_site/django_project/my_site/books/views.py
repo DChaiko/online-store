@@ -11,3 +11,10 @@ class BookView(DetailView):
 
 class BookList(ListView):
     model = Book
+    def get_queryset(self):
+        qs = super().get_queryset()
+        data = self.request.GET.get('key', None)
+        if data != None:
+            qs = qs.filter(book_name__contains=data)
+            return qs
+        return qs
