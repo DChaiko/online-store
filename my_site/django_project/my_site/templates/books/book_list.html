@@ -15,7 +15,7 @@ th, td {
   padding: 15px;
 }
 </style>
-  <title>Список авторов</title>
+  <title>Список книг</title>
  </head>
  <body>
   <h1>Книги</h1>
@@ -38,5 +38,6 @@ th, td {
     
    {% endfor %} 
     </table>
+    <a href="{% url 'book-create' %}" class="button">Create</a>
  </body>
 </html>
