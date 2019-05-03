@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from pages import views
+from pages.views import HomeView
 from directory.views import AuthorView
 from directory.views import SerieView
 from directory.views import GenreView
@@ -29,22 +30,11 @@ from directory.views import PublisherList, CreateAuthor, CreateSerie, CreateGenr
 
 
 urlpatterns = [
-    path('', views.home),
+    path('', HomeView.as_view() ),
     path('contacts/', views.contacts),
     path('admin/', admin.site.urls),
-    path('author/<int:pk>/', AuthorView.as_view(), name = 'author-detail-view'),
-    path('serie/<int:pk>/', SerieView.as_view(), name = 'serie-detail-view'),
-    path('genre/<int:pk>/', GenreView.as_view(), name = 'genre-detail-view'),
-    path('publisher/<int:pk>/', PublisherView.as_view(), name = 'publisher-detail-view'),
-    path('book/<int:pk>/', BookView.as_view(), name = 'book-detail-view'),
-    path('author_list/', AuthorList.as_view(), name = 'author-detail-list'),
-    path('serie_list/', SerieList.as_view(), name = 'serie-detail-list'),
-    path('genre_list/', GenreList.as_view(), name = 'genre-detail-list'),
-    path('publisher_list/', PublisherList.as_view(), name = 'publisher-detail-list'),
-    path('book_list/', BookList.as_view(), name = 'book-detail-list'),
-    path('create_author/', CreateAuthor.as_view(), name = 'author-create'),
-    path('create_serie/', CreateSerie.as_view(), name = 'serie-create'),
-    path('create_genre/', CreateGenre.as_view(), name = 'genre-create'),
-    path('create_publisher/', CreatePublisher.as_view(), name = 'publisher-create'),
-    path('create_book/', CreateBook.as_view(), name = 'book-create'),
+    path('book/', include('books.urls')),
+    path('', include('directory.urls')),
+    
 ]
+

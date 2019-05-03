@@ -2,10 +2,6 @@
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <form>
-  <input type='text' name='key'>
-  <input type='submit' value='search'>
-  </form>
   <style>
 table, th, td {
   border: 1px solid black;
@@ -16,9 +12,14 @@ th, td {
 }
 </style>
   <title>Список книг</title>
+   
  </head>
  <body>
   <h1>Книги</h1>
+   <form>
+  <input type='text' name='key'>
+  <input type='submit' value='search'>
+  </form>
     <table>
     <tr>
     <th>pk</th>
@@ -33,7 +34,8 @@ th, td {
         <td><a href="{% url 'book-detail-view' book.pk %}">{{ book.book_name }}</a></td>
         <td>{{ book.author.all|join:" // " }}</td>
         <td>{{ book.genre }}</td>
-        
+        <td><a href="{% url 'book-update' book.pk %}" class="button">Update</a></td>
+        <td><a href="{% url 'book-delete' book.pk %}" class="button">Delete</a></td>
         </tr>
     
    {% endfor %} 

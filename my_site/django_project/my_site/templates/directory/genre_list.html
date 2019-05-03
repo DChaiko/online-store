@@ -29,6 +29,8 @@ th, td {
         <tr>
         <td><a href="{% url 'genre-detail-view' genre.pk %}">{{ genre.genre }}</a></td>
         <td>{{ genre.pk }}</td>
+        <td><a href="{% url 'genre-update' genre.pk %}" class="button">Update</a></td>
+        <td><a href="{% url 'genre-delete' genre.pk %}" class="button">Delete</a></td>
         </tr>
     
    {% endfor %} 

@@ -29,6 +29,8 @@ th, td {
         <tr>
         <td><a href="{% url 'publisher-detail-view' publisher.pk %}">{{ publisher.pub }}</a></td>
         <td>{{ publisher.pk }}</td>
+        <td><a href="{% url 'publisher-update' publisher.pk %}" class="button">Update</a></td>
+        <td><a href="{% url 'publisher-delete' publisher.pk %}" class="button">Delete</a></td>
         </tr>
     
    {% endfor %} 

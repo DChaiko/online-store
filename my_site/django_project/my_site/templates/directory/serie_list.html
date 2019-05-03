@@ -29,6 +29,8 @@ th, td {
         <tr>
         <td><a href="{% url 'serie-detail-view' serie.pk %}">{{ serie.serie }}</a></td>
         <td>{{ serie.pk }}</td>
+        <td><a href="{% url 'serie-update' serie.pk %}" class="button">Update</a></td>
+        <td><a href="{% url 'serie-delete' serie.pk %}" class="button">Delete</a></td>
         </tr>
     
    {% endfor %} 

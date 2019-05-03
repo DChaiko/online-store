@@ -5,7 +5,7 @@ from directory.models import Author
 from directory.models import Serie
 from directory.models import Genre
 from directory.models import Publisher
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 # Create your views here.
 
@@ -39,7 +39,6 @@ class AuthorList(ListView):
         #if redirect:
         #    return reverse_lazy('author-create')
 
-        
 class SerieList(ListView):
     model = Serie
     def get_queryset(self):
@@ -97,3 +96,41 @@ class CreatePublisher(CreateView):
     def get_success_url(self):
         redirect = self.request.POST.get('author-detail-list')
         return reverse_lazy('publisher-detail-list')
+
+class UpdateAuthor(UpdateView):
+    model = Author
+    fields = ['name']
+    def get_success_url(self):
+        redirect = self.request.POST.get('author-detail-list')
+        return reverse_lazy('author-detail-list')
+
+class DeleteAuthor(DeleteView):
+    model = Author
+    success_url = reverse_lazy('author-detail-list')
+
+class UpdateSerie(UpdateView):
+    model = Serie
+    fields = ['serie']
+    success_url = reverse_lazy('serie-detail-list')
+    
+class UpdateGenre(UpdateView):
+    model = Genre
+    fields = ['genre']
+    success_url = reverse_lazy('genre-detail-list')
+
+class UpdatePublisher(UpdateView):
+    model = Publisher
+    fields = ['pub']
+    success_url = reverse_lazy('publisher-detail-list')
+
+class DeleteSerie(DeleteView):
+    model = Serie
+    success_url = reverse_lazy('serie-detail-list')
+
+class DeleteGenre(DeleteView):
+    model = Genre
+    success_url = reverse_lazy('genre-detail-list')
+
+class DeletePublisher(DeleteView):
+    model = Publisher
+    success_url = reverse_lazy('publisher-detail-list')
