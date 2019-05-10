@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my apps
-    'directory',
+    'authors',
     'books',
+    'genres',
+    'series',
+    'publishers',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +126,10 @@ USE_TZ = True
 
 
 
-MEDIA_URL = '/media/'
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 STATIC_URL = '/static/'

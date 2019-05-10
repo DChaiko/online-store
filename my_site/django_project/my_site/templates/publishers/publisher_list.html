@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <title>Список издателей</title>
+ </head>
+ <body>
+  <h3 class="display-3">Издатели</h3>
+    <table class="table">
+    <tr>
+    <th scope="col">Издатель</th>
+    <th scope="col">pk</th> 
+    </tr>
+  {% for publisher in object_list %}
+    
+        <tr>
+        <td><a href="{% url 'publisher-detail-view' publisher.pk %}">{{ publisher.pub }}</a></td>
+        <td>{{ publisher.pk }}</td>
+        <td><a class="btn btn-light" href="{% url 'publisher-update' publisher.pk %}" class="button">Update</a></td>
+        <td><a class="btn btn-danger" href="{% url 'publisher-delete' publisher.pk %}" class="button">Delete</a></td>
+        </tr>
+    
+   {% endfor %} 
+    </table>
+    <a class="btn btn-primary btn-lg" href="{% url 'publisher-create' %}" class="button">Create</a>
+{% endblock %}

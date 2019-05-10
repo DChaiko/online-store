@@ -1,5 +1,6 @@
 <h1>{{ object.book_name }}</h1>
-<img src = {{ object.cover }}  height="100" width="100">
+
+<img src = {{ object.cover.url }}  >
 
 <h4>{{ object.price }}</h4>
 <h4>{{ object.author.all|join:" // " }}</h4>

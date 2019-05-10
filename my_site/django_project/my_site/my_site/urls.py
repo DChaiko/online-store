@@ -17,24 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 from pages import views
 from pages.views import HomeView
-from directory.views import AuthorView
-from directory.views import SerieView
-from directory.views import GenreView
-from directory.views import PublisherView
-from books.views import BookView
-from books.views import BookList, CreateBook
-from directory.views import AuthorList
-from directory.views import SerieList
-from directory.views import GenreList
-from directory.views import PublisherList, CreateAuthor, CreateSerie, CreateGenre, CreatePublisher
+from django.conf.urls.static import static
+from . import settings
+from books.views import BookCard
 
 
 urlpatterns = [
-    path('', HomeView.as_view() ),
+    path('', BookCard.as_view() ),
     path('contacts/', views.contacts),
     path('admin/', admin.site.urls),
     path('book/', include('books.urls')),
-    path('', include('directory.urls')),
-    
-]
+    path('', include('authors.urls')),
+    path('', include('genres.urls')),
+    path('', include('publishers.urls')),
+    path('', include('series.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

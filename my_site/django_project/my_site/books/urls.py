@@ -1,6 +1,4 @@
 from django.urls import path, include
-
-
 from django.contrib import admin
 from books.views import BookView
 from books.views import BookList, CreateBook, UpdateBook, DeleteBook

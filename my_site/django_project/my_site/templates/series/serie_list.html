@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <title>Список серий</title>
+ </head>
+ <body>
+   <h3 class="display-3">Серии</h3>
+    <table class="table">
+    <tr>
+    <th scope="col">Название</th>
+    <th scope="col">pk</th> 
+    </tr>
+  {% for serie in object_list %}
+    
+        <tr>
+        <td><a href="{% url 'serie-detail-view' serie.pk %}">{{ serie.serie }}</a></td>
+        <td>{{ serie.pk }}</td>
+        <td><a class="btn btn-light" href="{% url 'serie-update' serie.pk %}" class="button">Update</a></td>
+        <td><a class="btn btn-danger" href="{% url 'serie-delete' serie.pk %}" class="button">Delete</a></td>
+        </tr>
+    
+   {% endfor %} 
+    </table>
+    <a class="btn btn-primary btn-lg" href="{% url 'serie-create' %}" class="button">Create</a>
+{% endblock %}

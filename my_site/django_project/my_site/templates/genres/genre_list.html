@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <title>Список жанров</title>
+ </head>
+ <body>
+  <h3 class="display-3">Жанры</h3>
+    <table class="table">
+    <tr>
+    <th scope="col">Имя</th>
+    <th scope="col">pk</th> 
+    </tr>
+  {% for genre in object_list %}
+    
+        <tr>
+        <td><a href="{% url 'genre-detail-view' genre.pk %}">{{ genre.genre }}</a></td>
+        <td>{{ genre.pk }}</td>
+        <td><a class="btn btn-light" href="{% url 'genre-update' genre.pk %}" class="button">Update</a></td>
+        <td><a class="btn btn-danger" href="{% url 'genre-delete' genre.pk %}" class="button">Delete</a></td>
+        </tr>
+    
+   {% endfor %} 
+    </table>
+    <a class="btn btn-primary btn-lg" href="{% url 'genre-create' %}" class="button">Create</a>
+{% endblock %}

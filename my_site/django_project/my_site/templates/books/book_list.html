@@ -1,31 +1,16 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-}
-</style>
+{% extends 'base.html' %}
+{% block content %}
   <title>Список книг</title>
    
  </head>
  <body>
-  <h1>Книги</h1>
-   <form>
-  <input type='text' name='key'>
-  <input type='submit' value='search'>
-  </form>
-    <table>
+  <h3 class="display-3">Книги</h3>
+    <table class="table">
     <tr>
-    <th>pk</th>
-    <th>Название</th>
-    <th>Автор</th>
-    <th>Жанр</th> 
+    <th scope="col">pk</th>
+    <th scope="col">Название</th>
+    <th scope="col">Авторы</th> 
+    <th scope="col">Жанр</th>  
     </tr>
   {% for book in object_list %}
     
@@ -34,12 +19,11 @@ th, td {
         <td><a href="{% url 'book-detail-view' book.pk %}">{{ book.book_name }}</a></td>
         <td>{{ book.author.all|join:" // " }}</td>
         <td>{{ book.genre }}</td>
-        <td><a href="{% url 'book-update' book.pk %}" class="button">Update</a></td>
-        <td><a href="{% url 'book-delete' book.pk %}" class="button">Delete</a></td>
+        <td><a class="btn btn-light" href="{% url 'book-update' book.pk %}" class="button">Update</a></td>
+        <td><a class="btn btn-danger" href="{% url 'book-delete' book.pk %}" class="button">Delete</a></td>
         </tr>
     
    {% endfor %} 
     </table>
-    <a href="{% url 'book-create' %}" class="button">Create</a>
- </body>
-</html>
+    <a class="btn btn-primary btn-lg" href="{% url 'book-create' %}" class="button">Create</a>
+{% endblock %}
