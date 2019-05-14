@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'genres',
     'series',
     'publishers',
+    'cart',
 ]
 
 MIDDLEWARE = [

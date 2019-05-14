@@ -20,10 +20,11 @@ from pages.views import HomeView
 from django.conf.urls.static import static
 from . import settings
 from books.views import BookCard
+from cart.views import AddIntoCart
 
 
 urlpatterns = [
-    path('', BookCard.as_view() ),
+    path('', BookCard.as_view(), name = 'home'),
     path('contacts/', views.contacts),
     path('admin/', admin.site.urls),
     path('book/', include('books.urls')),
@@ -31,5 +32,6 @@ urlpatterns = [
     path('', include('genres.urls')),
     path('', include('publishers.urls')),
     path('', include('series.urls')),
+    path('cart/<int:pk>', AddIntoCart.as_view(), name = 'add-into-cart')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
