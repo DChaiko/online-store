@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+  <title>Корзина</title>
+   
+ </head>
+ <body>
+  <h4 class="display-4">Корзина</h4>
+    <table class="table">
+    <tr>
+    
+    <th scope="col">Название</th>
+    <th scope="col">Количество</th>
+    <th scope="col">Цена</th>    
+    </tr>
+  {% for book in object.user_cart.all %}
+    
+        <tr>
+        <td><a href="{% url 'book-detail-view' book.pk %}">{{ book.book.book_name }}</a></td>
+        <td>{{ book.quantity }}</td>
+        <td>{{ book.price_of_books }}</td>
+        
+        </tr>
+    
+   {% endfor %} 
+    </table>
+    
+    
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            {% if object.number_of_books > 0 %}
+                <H5>Заполните форму для оформления заказа</H5>
+                <form action="{% url 'order-create' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Оформить заказ" class="btn btn-primary">
+                    
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
