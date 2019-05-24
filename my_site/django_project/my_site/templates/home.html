@@ -33,6 +33,15 @@
                         <li class="nav-item">
                           <a class="nav-link" href="{% url 'cart-view' %}">Корзина</a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'login-page' %}">Логин</a>
+                        </li> 
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'logout-page' %}">Выйти</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" >Пользователь: {{ user }}</a>
+                        </li>
                     </div>
                   </nav>
     {% for object in object_list %}

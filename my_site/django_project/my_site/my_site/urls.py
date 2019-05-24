@@ -34,6 +34,7 @@ urlpatterns = [
     path('', include('series.urls')),
     path('', include('order.urls')),
     path('', include('cart.urls')),
+    path('', include('login.urls')),
     path('cart/<int:pk>', AddIntoCart.as_view(), name = 'add-into-cart')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

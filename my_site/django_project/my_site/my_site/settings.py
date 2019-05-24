@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'publishers',
     'cart',
     'order',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = 'home'

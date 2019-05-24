@@ -7,7 +7,12 @@
   <input type='text' name='key'>
   <input type='submit' value='search'>
   </form>
- 
+  <title>
+  {% block title %}
+  {% endblock %}
+  </title>
+   
+ </head>
   {% block content %}
   {% endblock %}
 
