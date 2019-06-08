@@ -19,6 +19,7 @@
         <td><a href="{% url 'book-detail-view' book.pk %}">{{ book.book.book_name }}</a></td>
         <td>{{ book.quantity }}</td>
         <td>{{ book.price_of_books }}</td>
+        <td><a class="btn btn-danger" href="{% url 'order-delete' book.pk %}" class="button">Delete</a></td>
         
         </tr>
     

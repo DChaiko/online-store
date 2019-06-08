@@ -40,7 +40,7 @@
                           <a class="nav-link" href="{% url 'logout-page' %}">Выйти</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" >Пользователь: {{ user }}</a>
+                          <a class="nav-link" href="{% url 'user-page' %}">Пользователь: {{ user }}</a>
                         </li>
                     </div>
                   </nav>
@@ -53,7 +53,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ object.book_name }}</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text">{{ object.description }}</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         <a href="{% url 'book-detail-view' object.pk %}" class="btn btn-primary">Посмотреть</a>
         <a href="{% url 'add-into-cart' object.pk %}" class="btn btn-primary">Купить</a>

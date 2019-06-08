@@ -1,20 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>{{ object.book_name }}</title>{% endblock %}
+
+{% block content %}
 <h1>{{ object.book_name }}</h1>
 
 <img src = {{ object.cover.url }}  >
 
-<h4>{{ object.price }}</h4>
-<h4>{{ object.author.all|join:" // " }}</h4>
-<h4>{{ object.serie }}</h4>
-<h4>{{ object.genre }}</h4>
-<h4>{{ object.pub_year }}</h4>
-<h4>{{ object.pages }}</h4>
-<h4>{{ object.binding }}</h4>
-<h4>{{ object.form }}</h4>
-<h4>{{ object.isbn }}</h4>
-<h4>{{ object.weigth }}</h4>
-<h4>{{ object.publisher }}</h4>
-<h4>{{ object.availability }}</h4>
-<h4>{{ object.activ }}</h4>
-<h4>{{ object.rating }}</h4>
-<h4>{{ object.add_date }}</h4>
-<h4>{{ object.change_date }}</h4>
+ <h5>Стоймость: {{ object.price }}руб</h5> 
+ <h5>Авторы: {{ object.author.all|join:" // " }}</h5>
+ <h5>Серия: {{ object.serie }}</h5>
+ <h5>Жанр: {{ object.genre }}</h5>
+ <h5>Год издния: {{ object.pub_year }}</h5>
+ <h5>Кол. страниц: {{ object.pages }}</h5>
+ <h5>Переплет: {{ object.binding }}</h5>
+ <h5>Формат: {{ object.form }}</h5>
+ <h5>ISBN: {{ object.isbn }}</h5>
+<h5>Вес: {{ object.weigth }}</h5>
+<h5>Издатель: {{ object.publisher }}</h5>
+ <h5>Наличие: {{ object.availability }}</h5>
+ <h5>Активно: {{ object.activ }}</h5>
+ <h5>Рейтинг: {{ object.rating }}</h5>
+ <h5>Дата добавления: {{ object.add_date }}</h5>
+ <h5>Дата изменения: {{ object.change_date }}</h5>
+ <a href="{% url 'add-into-cart' object.pk %}" class="btn btn-primary">Купить</a>
+{% endblock %}

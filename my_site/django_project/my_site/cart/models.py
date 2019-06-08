@@ -1,7 +1,7 @@
 from django.db import models
 #from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your models here.
 
 User = get_user_model()
@@ -45,3 +45,6 @@ class BookInCart(models.Model):
         return price 
 
     
+#class DeleteOrder(DeleteView):
+#    model = BookInCart
+#    success_url = reverse_lazy('cart-view')

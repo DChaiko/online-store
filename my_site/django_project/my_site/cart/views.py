@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from cart.models import BookInCart, Cart
 from django.urls import reverse_lazy
@@ -50,3 +50,7 @@ class CartView(DetailView):
         context['form'] = checkout_form
         print(context)
         return context
+
+class DeleteOrder(DeleteView):
+    model = BookInCart
+    success_url = reverse_lazy('cart-view')
